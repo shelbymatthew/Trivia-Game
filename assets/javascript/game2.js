@@ -1,4 +1,4 @@
-// $(document).ready(function()
+$(document).ready(function(){
     var correctAnswers = 0;
     var wrongAnswers = 0;
     var unanswered = 0; 
@@ -6,34 +6,34 @@
     var number;
 
     var questionOne = {
-        question: "What is your name?",
-        answers: ["Shelby", "Shane", "Sarah", "Nuki"],
-        correctAnswer: "Shelby",
-        image: "http://lorempixel.com/400/200/",
+        question: "What is the name of the town in whicn Parks and Recreation is set?",
+        answers: ["Fort Wayne", "Gary", "Pawnee", "Hammond"],
+        correctAnswer: "Pawnee",
+        image: "./assets/images/pawnee.png",
 
     };
 
     var questionTwo = {
-        question: "What is your favorite color?",
-        answers: ["Red", "Blue", "Yellow", "Green"],
-        correctAnswer: "Yellow",
-        image: "http://lorempixel.com/400/200/"
+        question: "What was the name of the media company Tom Haverford founded?",
+        answers: ["Entertainment 720", "Tommy Fresh Productions", "Prestige Worldwide", "Mona Lisa Media"],
+        correctAnswer: "Entertainment 720",
+        image: "./assets/images/Entertainment_720_Logo.jpg"
 
     };
 
     var questionThree = {
-        question: "What is your favorite color3?",
-        answers: ["Red", "Blue", "Yellow", "Green"],
-        correctAnswer: "Yellow",
-        image: "http://lorempixel.com/400/200/"
+        question: "What is the most consistent name of Andy Dwyer's rock band",
+        answers: ["Rock the Cash Bar", "Andy D and the Kids Table", "Yellow Sub Sandwich", "Mouse Rat"],
+        correctAnswer: "Mouse Rat",
+        image: "./assets/images/mouserat.jpg"
 
     };
 
     var questionFour = {
-        question: "What is your favorite color4?",
-        answers: ["Red", "Blue", "Yellow", "Green"],
-        correctAnswer: "Yellow",
-        image: "http://lorempixel.com/400/200/"
+        question: "How old was Ben when the infamous Ice Town happened??",
+        answers: ["22", "18", "19", "28"],
+        correctAnswer: "18",
+        image: "./assets/images/icetown.jpg"
 
     };
     var questionFive = {
@@ -53,98 +53,38 @@
     var i = 0;
     gameLoop();
     $("#show-number").html("<h2>" + number + "</h2>");
-    
-    function gameLoop() {
-        // clearInterval(intervalId);
-        
-        $("#gameScreen").show();
-        $("#resultScreen").hide();
-        $("#finalSCreen").empty();
-        
-        writeQuestions(allQuestions[i]);
-        // stop();
-        run();
-    }
         var intervalId;
-        
-
         $(".answer").on("click", stop);
+        $(".answer").on("click", function () {
+            console.log(this.value);
+            playerGuess = this.value;
 
-        $("#resume").on("click", run);
-
-        function run() {
-            number = 10;
-            clearInterval(intervalId);
-            intervalId = setInterval(decrement, 1000);
-        }
-
-        function decrement() {
-            number--;
-
-            $("#show-number").html("<h2>" + number + "</h2>");
-
-            if (number === 0) {
-                stop();
-                $("#result").text(results[2] + ". The correct answer is " + allQuestions[i].correctAnswer + ".");
+            if (playerGuess === allQuestions[i].correctAnswer) {
+                $("#result").text(results[0] + "!");
                 $("#image").attr("src", allQuestions[i].image);
                 $("#gameScreen").hide();
                 $("#resultScreen").show();
+                correctAnswers++;
+                console.log("correct " + correctAnswers)
+                stop();
+                i++; 
+                console.log("I: " + i)
+                setTimeout(gameLoop, 3000);
+                
+                
+
+            } else {
+                $("#result").text(results[1] + "! The correct answer is " + allQuestions[i].correctAnswer + ".");
+                $("#image").attr("src", allQuestions[i].image);
+                $("#gameScreen").hide();
+                $("#resultScreen").show()
                 stop();
                 i++;
-                unanswered++;
-                console.log(unanswered)
                 setTimeout(gameLoop, 5000);
-               
+                wrongAnswers++;
+                console.log("wrong " + wrongAnswers)
 
-                // alert("Time Up!");
-                // i++;
-                // gameLoop();
-            }
-        }
-
-        function stop() {
-
-            clearInterval(intervalId);
-            number = 10;
-            
-        }
-
-        // run();
-
-
-
-    
-    $(".answer").on("click", function () {
-        console.log(this.value);
-        playerGuess = this.value;
-
-        if (playerGuess === allQuestions[i].correctAnswer) {
-            $("#result").text(results[0]);
-            $("#image").attr("src", allQuestions[i].image);
-            $("#gameScreen").hide();
-            $("#resultScreen").show();
-            correctAnswers++;
-            console.log("correct " + correctAnswers)
-            stop();
-            i++; 
-            console.log("I: " + i)
-            setTimeout(gameLoop, 3000);
-            
-            
-
-        } else {
-            $("#result").text(results[1] + ". The correct answer is " + allQuestions[i].correctAnswer + ".");
-            $("#image").attr("src", allQuestions[i].image);
-            $("#gameScreen").hide();
-            $("#resultScreen").show()
-            stop();
-            i++;
-            setTimeout(gameLoop, 5000);
-            wrongAnswers++;
-            console.log("wrong " + wrongAnswers)
-
-        } 
-        
+                } 
 
     });
 
@@ -162,10 +102,6 @@
         $("#D").attr("value", currentQuestion.answers[3]);
         }
      else writeStats();
-        
-        
-
-
     }
 
     function newGame(){
@@ -189,7 +125,46 @@
         $("#playAgain").on("click", function () {
             newGame();
 
-        });
-        
-
+    });
     }
+
+    function gameLoop() {           
+        $("#gameScreen").show();
+        $("#resultScreen").hide();
+        $("#finalSCreen").empty();    
+        writeQuestions(allQuestions[i]);
+        run();
+    }
+
+    function run() {
+        number = 10;
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    }
+
+    function decrement() {
+        number--;
+        $("#show-number").html("<h2>" + number + "</h2>");
+            if (number === 0) {
+                stop();
+                $("#result").text(results[2] + ". The correct answer is " + allQuestions[i].correctAnswer + ".");
+                $("#image").attr("src", allQuestions[i].image);
+                $("#gameScreen").hide();
+                $("#resultScreen").show();
+                stop();
+                i++;
+                unanswered++;
+                console.log(unanswered)
+                setTimeout(gameLoop, 5000);
+            } else {
+        
+            }
+    }
+
+    function stop() {
+        clearInterval(intervalId);
+        number = 10;
+    }
+        
+});
+    
