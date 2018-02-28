@@ -9,7 +9,7 @@ $(document).ready(function(){
         question: "What is the name of the town in whicn Parks and Recreation is set?",
         answers: ["Fort Wayne", "Gary", "Pawnee", "Hammond"],
         correctAnswer: "Pawnee",
-        image: "./assets/images/pawnee.png",
+        image: "./assets/images/Pawnee.png",
 
     };
 
