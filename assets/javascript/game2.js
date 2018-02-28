@@ -76,12 +76,20 @@ $(document).ready(function(){
 
     };
 
+    var questionTen = {
+        question: "What is the name of the Ron Swanson's saxaphone playing alter ego?",
+        answers: ["Dan Pepitone", "Ronny G", "Ron Coletrane", "Duke Silver"],
+        correctAnswer: "Duke Silver",
+        image: "./assets/images/dukesilver.jpg"
+
+    };
+
     
         
     
 
     var results = ["Correct", "Incorrect", "Times up"]
-    var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight, questionNine];
+    var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight, questionNine, questionTen];
     console.log(questionOne.correctAnswer);
     var i = 0;
     gameLoop();
