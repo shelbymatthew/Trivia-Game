@@ -30,25 +30,58 @@ $(document).ready(function(){
     };
 
     var questionFour = {
-        question: "How old was Ben when the infamous Ice Town happened??",
+        question: "How old was Ben Wyatt when the infamous Ice Town happened??",
         answers: ["22", "18", "19", "28"],
         correctAnswer: "18",
         image: "./assets/images/icetown.jpg"
 
     };
     var questionFive = {
-        question: "What is your favorite color5?",
-        answers: ["Red", "Blue", "Yellow", "Green"],
-        correctAnswer: "Yellow",
-        image: "http://lorempixel.com/400/200/"
+        question: "What is the name of the candy factory located in Pawnee?",
+        answers: ["Candyopolis", "Sugarplums", "Sweetums", "Pucker Ups"],
+        correctAnswer: "Sweetums",
+        image: "./assets/images/sweetums.jpg"
 
     };
+    
+    var questionSix = {
+        question: "What is the name of Leslie's othordontic nemesis on the city council?",
+        answers: ["Jeremy Jamm", "Johnny Jump", "Greg Grab", "Jeff Jagg"],
+        correctAnswer: "Jeremy Jamm",
+        image: "./assets/images/jamm.png"
+
+    };
+
+    var questionSeven = {
+        question: "Who is Lesie Knope's celebrity crush?",
+        answers: ["Patrick Swayze", "Jon Bon Jovi", "Joe Biden", "Albert Einstein"],
+        correctAnswer: "Joe Biden",
+        image: "./assets/images/biden.jpg"
+
+    };
+
+    var questionEight = {
+        question: "What is the name of April and Andy's three legged dog?",
+        answers: ["Bandit", "Champion", "Goliath", "Skipper"],
+        correctAnswer: "Champion",
+        image: "./assets/images/champion.jpg"
+
+    };
+
+    var questionNine = {
+        question: "What is the name of the most prominent fast food restaurant in Pawnee?",
+        answers: ["Paunch Burger", "Jiggly Fries", "Fat Sacks", "Sluggems"],
+        correctAnswer: "Paunch Burger",
+        image: "./assets/images/paunch.jpg"
+
+    };
+
     
         
     
 
     var results = ["Correct", "Incorrect", "Times up"]
-    var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive];
+    var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight, questionNine];
     console.log(questionOne.correctAnswer);
     var i = 0;
     gameLoop();
@@ -69,7 +102,7 @@ $(document).ready(function(){
                 stop();
                 i++; 
                 console.log("I: " + i)
-                setTimeout(gameLoop, 3000);
+                setTimeout(gameLoop, 1000);
                 
                 
 
