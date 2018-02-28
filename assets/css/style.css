@@ -4,17 +4,19 @@ body{
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        color: rgb(46, 46, 46);
+        color: #314F64; 
+
 
 }
 
 #title{
     margin: 20px 0 0 0 ;
+
 }
 
 
 .container  {
-    background: rgba(250, 224, 139, 0.92);
+    background: rgba(250, 224, 139, 0.913);
     padding-bottom: 100px;
     margin-top: 20px;
 }
@@ -23,6 +25,9 @@ body{
     padding: 20px;
     margin: 10px;
     background: rgba(181, 86, 159, 0.208);
-    color: rgb(46, 46, 46);
+    color: #314F64; 
+    font-weight: bold;
+
+    
 
 }

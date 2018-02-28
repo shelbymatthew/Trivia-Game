@@ -53,7 +53,7 @@ $(document).ready(function(){
     };
 
     var questionSeven = {
-        question: "Who is Lesie Knope's celebrity crush?",
+        question: "Who is Leslie Knope's celebrity crush?",
         answers: ["Patrick Swayze", "Jon Bon Jovi", "Joe Biden", "Albert Einstein"],
         correctAnswer: "Joe Biden",
         image: "./assets/images/biden.jpg"
@@ -84,20 +84,16 @@ $(document).ready(function(){
 
     };
 
-    
-        
-    
-
     var results = ["Correct", "Incorrect", "Times up"]
     var allQuestions = [questionOne, questionTwo, questionThree, questionFour, questionFive, questionSix, questionSeven, questionEight, questionNine, questionTen];
-    console.log(questionOne.correctAnswer);
     var i = 0;
+
     gameLoop();
+
     $("#show-number").html("<h2>" + number + "</h2>");
         var intervalId;
         $(".answer").on("click", stop);
         $(".answer").on("click", function () {
-            console.log(this.value);
             playerGuess = this.value;
 
             if (playerGuess === allQuestions[i].correctAnswer) {
@@ -106,14 +102,9 @@ $(document).ready(function(){
                 $("#gameScreen").hide();
                 $("#resultScreen").show();
                 correctAnswers++;
-                console.log("correct " + correctAnswers)
                 stop();
                 i++; 
-                console.log("I: " + i)
-                setTimeout(gameLoop, 1000);
-                
-                
-
+                setTimeout(gameLoop, 3000);    
             } else {
                 $("#result").text(results[1] + "! The correct answer is " + allQuestions[i].correctAnswer + ".");
                 $("#image").attr("src", allQuestions[i].image);
@@ -121,17 +112,15 @@ $(document).ready(function(){
                 $("#resultScreen").show()
                 stop();
                 i++;
-                setTimeout(gameLoop, 5000);
+                setTimeout(gameLoop, 3000);
                 wrongAnswers++;
-                console.log("wrong " + wrongAnswers)
-
                 } 
 
     });
 
     function writeQuestions(currentQuestion) {
+        
         if (allQuestions.length >= (i + 1)){
-            console.log("I = " + i + "allqu = " + allQuestions.length)
         $("#question").text(currentQuestion.question);
         $("#A").text(currentQuestion.answers[0]);
         $("#B").text(currentQuestion.answers[1]);
@@ -150,7 +139,7 @@ $(document).ready(function(){
         wrongAnswers = 0;
         unanswered = 0; 
         userGuess = "";
-        number = 0;
+        number;
         i = 0;
         $("#finalScreen").hide();
         gameLoop();
@@ -158,6 +147,8 @@ $(document).ready(function(){
     }
 
     function writeStats() {
+        stop();
+        $("#finalScreen").show();
         $("#gameScreen").hide();
         $("#correct").text("Correct Answers: " + correctAnswers);
         $("#incorrect").text("Incorrect Answers: " + wrongAnswers);
@@ -169,16 +160,15 @@ $(document).ready(function(){
     });
     }
 
-    function gameLoop() {           
+    function gameLoop() {        
         $("#gameScreen").show();
-        $("#resultScreen").hide();
-        $("#finalSCreen").empty();    
+        $("#resultScreen").hide();    
         writeQuestions(allQuestions[i]);
         run();
     }
 
     function run() {
-        number = 10;
+        number = 30;
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
     }
@@ -192,13 +182,9 @@ $(document).ready(function(){
                 $("#image").attr("src", allQuestions[i].image);
                 $("#gameScreen").hide();
                 $("#resultScreen").show();
-                stop();
                 i++;
                 unanswered++;
-                console.log(unanswered)
-                setTimeout(gameLoop, 5000);
-            } else {
-        
+                setTimeout(gameLoop, 3000);
             }
     }
 
